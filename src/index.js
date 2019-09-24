@@ -22,11 +22,13 @@ const secondReducer = (state=100, action)=>{
     return state;
 }
 
-const addElementReducer = (state={}, action)=>{
-    if (action.type === 'ADD_ELEMENT'){
-        console.log('hello from add element', action.payload)
+const addElementReducer = (state=[], action)=>{
+    switch(action.type){
+        case 'ADD_ELEMENT':
+            return [...state, action.payload];
+        default:
+            return state
     }
-    return state;
 }
 
 const storeInstance = createStore(
